@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>日历</title>
+	<style type="text/css">
+			#div2{
+				width: 450px;
+				height: 450px;
+				border: 1px solid black;
+				margin: auto;
+				margin-top: 20px;
+			}
+				#div21{
+					width: 300px;
+					height: 72px;
+					margin:auto;
+					line-height: 34px;
+					border: 1px solid black;
+				}
+				#div22 li{
+					float: left;
+					width: 20px;
+					height: 20px;
+					margin: 10px 12px;
+					border: 2px solid rgba(0,0,0,0);
+					text-align:center;
+					list-style-type:none;
+					display: inline-block;
+					line-height: 34px;
+					cursor: pointer;
+				}
+				#div22{
+					width: 400px;
+					height: 350px;
+					margin:auto;
+					border: 1px solid black;
+				}
+				#table1{
+					width: 355px;
+					height: 30px;
+					border-spacing: 30px 33px;
+				}
+				#table2{
+					width: 100%;
+					height: 20%;
+					line-height: 30px;
+					border-spacing: 30px 0px;
+				}
+	</style>
+</head>
+<body>
+	
+		<div id="div2">
+			<div id="div21">
+				<p align='center';>
+					<button id="last">上一月</button>
+					<span id="time"></span>
+					<button id="next">下一月</button>
+				</p>						
+			</div>
+			<div id="div22">
+				<ul>
+					<li>日</li>
+					<li>一</li>
+					<li>二</li>
+					<li>三</li>
+					<li>四</li>
+					<li>五</li>
+					<li>六</li>
+				</ul>
+				<ul id='days'>
+					
+				</ul>
+			</div>
+		</div>
+<script type="text/javascript">
+	var date = new Date();
+	add();
+	function add() {
+		let year = date.getFullYear();
+		let month = date.getMonth();
+		let arr = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月',]
+		document.getElementById('time').innerHTML = year+'年'+arr[month];
+		let firstday = new Date(year,month,1);
+		let lastday = new Date(year,month+1,0);
+		let days = lastday.getDate();
+		let k = '';
+		for (var i = 0; i < firstday.getDay(); i++) {
+			k +='<li>'+''+'</li>';
+		}
+		for (var i = 1; i <= days; i++) {
+			k +='<li>'+i+'</li>';
+		}
+		document.getElementById('days').innerHTML = k;
+	}
+	document.getElementById('next').onclick = function () {
+		date.setMonth(date.getMonth()+1);
+		add();
+	}
+	document.getElementById('last').onclick = function () {
+		date.setMonth(date.getMonth()-1);
+		add();
+	}
+</script>
+</body>
+</html>

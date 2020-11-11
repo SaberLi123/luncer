@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var part1 = /lonmkey/i;
+		// var str = 'this is a lonmkey';
+		// if (part1.test(str)) {
+		// 	console.log('ok');
+		// }
+		var part = /^(\w+)@(\w+)((\.\w+)+)$/ig;
+		var email = 'www@qq.com.cn';
+		if (part.test(email)) {
+			console.log('ok');
+		}else{
+			console.log('no');
+		}
+		var url = email.replace(part,'<a href="https://$1.$2$3">$1.$2$3<a/>');
+		// console.log(url);
+		document.write(email);
+		document.write('<br>');
+		document.write(url);
+	</script>
+</body>
+</html>
